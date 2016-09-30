@@ -43,22 +43,6 @@ RSpec.describe ShippingAgent::Deploy do
       subject.apply
     end
 
-    it "sets up a notification" do
-      expect(ShippingAgent::Notification).to receive(:update)
-        .with(
-          "pending",
-          "Config for shipping-agent-api pushed to kubernetes",
-          subject,
-        )
-      expect(ShippingAgent::Notification).to receive(:update)
-        .with(
-          "pending",
-          "Config for shipping-agent-worker pushed to kubernetes",
-          subject,
-        )
-      subject.apply
-    end
-
     it "patches the image and metadata" do
       expect(ShippingAgent::K8s).to receive(:patch_deployment) do |args|
         expect(args[:body]).to eq(

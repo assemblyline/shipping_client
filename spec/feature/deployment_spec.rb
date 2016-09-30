@@ -93,10 +93,6 @@ RSpec.describe "Deploying To Kubernetes" do
     expect(ShippingAgent::Notification).to receive(:update)
       .with("request", "Deployment of `dogfood` to `production` was requested",  an_instance_of(ShippingAgent::Deploy))
     expect(ShippingAgent::Notification).to receive(:update)
-      .with("pending", "Config for dogfood-can pushed to kubernetes",  an_instance_of(ShippingAgent::Deploy))
-    expect(ShippingAgent::Notification).to receive(:update)
-      .with("pending", "Config for dogfood-bowl pushed to kubernetes", an_instance_of(ShippingAgent::Deploy))
-    expect(ShippingAgent::Notification).to receive(:update)
       .with("success", "dogfood deployed sucessfully to production",   an_instance_of(ShippingAgent::Deploy))
 
     post "/", body

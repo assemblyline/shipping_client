@@ -65,7 +65,7 @@ module ShippingAgent
             },
           },
         )
-        Notification.update("pending", "Config for #{deployment} pushed to kubernetes", self)
+        LOGGER.info { "Config for #{deployment} pushed to kubernetes" }
       end
     end
 
