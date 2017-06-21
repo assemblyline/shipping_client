@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "puma"
 gem "octokit"
 gem "slack-ruby-client"
+gem "dogstatsd-ruby"
 
 group :test do
   gem "pry"
@@ -13,5 +14,4 @@ group :test do
   gem "bundler-audit"
   gem "webmock"
   gem "simplecov", require: false
-  gem "codeclimate-test-reporter", require: false
 end
