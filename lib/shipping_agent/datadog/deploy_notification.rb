@@ -17,8 +17,6 @@ module ShippingAgent
         end
       end
 
-      private
-
       class Notifier
         def self.notify(status, deploy)
           new(status, deploy).notify
@@ -33,11 +31,13 @@ module ShippingAgent
         end
 
         def notify
-          @datadog.event(event_key, event_text, { aggregation_key: event_key })
+          @datadog.event(event_key, event_text,  aggregation_key: event_key)
         end
 
+        private
+
         def event_key
-          @_event_key ||= [@deploy.app, @deploy.namespace, "deploy"].join('.')
+          @_event_key ||= [@deploy.app, @deploy.namespace, "deploy"].join(".")
         end
 
         def event_text
